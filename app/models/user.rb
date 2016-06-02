@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
+  has_many :sessions
+  has_many :images
+
   has_secure_password validations: :false
-  validates :name, :email, :password, presence: true, length: { minimum: 5 }
   validates :email, uniqueness: true
-  #attr_accessible :password, :email, :namessssss
+  validates :name, :email, :password, presence: true, length: { minimum: 5 }
+  attr_accessible :password, :name, :email
 end

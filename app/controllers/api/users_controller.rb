@@ -1,4 +1,5 @@
 class Api::UsersController < Api::BaseController
+  before_action :verify_access_token
   before_action :find_user, only: [:update, :destroy, :show]
 
   def show
@@ -27,6 +28,12 @@ class Api::UsersController < Api::BaseController
   end
 
   def find_user
-    @user = User.find(params[:id])
+    @user = User.find(@session.user_id)
+  end
+
+  def verify_access_token
+    authenticate_or_request_with_http_token do |token, options|
+      @session = Session.find_by_token token
+    end
   end
 end
