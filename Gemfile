@@ -12,6 +12,10 @@ gem 'protected_attributes'
 
 group :development, :test do
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'shoulda-matchers'
 end
 
 group :development do
