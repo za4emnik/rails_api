@@ -1,6 +1,8 @@
 class Image < ActiveRecord::Base
-  mount_uploader :image, ImageUploader
+  has_many :tasks
+  #has_one :user, through: :tasks
   belongs_to :user
-  paginates_per 2
+  mount_uploader :image, ImageUploader
+  paginates_per 10
   validates :user_id, :image, presence: true
 end

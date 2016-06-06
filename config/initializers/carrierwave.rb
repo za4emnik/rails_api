@@ -7,7 +7,7 @@ if Rails.env.test? || Rails.env.cucumber?
 
   ImageUploader
 
-  CarrierWave::Uploader::Base.descendants.each do |klass|
+  CarrierWave::Uploader::Base.subclasses.each do |klass|
     next if klass.anonymous?
     klass.class_eval do
       def cache_dir

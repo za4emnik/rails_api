@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :sessions
   has_many :images
+  has_many :tasks
 
   has_secure_password validations: :false
   validates :email, uniqueness: true
