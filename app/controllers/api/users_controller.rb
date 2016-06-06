@@ -1,4 +1,5 @@
 class Api::UsersController < Api::BaseController
+  before_action :user_verify, only: [:update, :destroy, :show, :index]
 
   def show
     render_response @user
@@ -23,5 +24,9 @@ class Api::UsersController < Api::BaseController
 
   def user_params
     params.require(:user).permit(:name, :email, :password)
+  end
+
+  def user_verify
+      raise UnauthorizedError if @session.user_id != params[:id].to_i
   end
 end
