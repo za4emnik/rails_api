@@ -2,7 +2,7 @@ class Api::TasksController < Api::BaseController
   before_action :find_task, only: [:show, :update, :destroy]
 
   def index
-    render_response @user.tasks
+    render_response @user.tasks.page params[:page]
   end
 
   def show
@@ -10,11 +10,14 @@ class Api::TasksController < Api::BaseController
   end
 
   def create
+    Task.search_image params[:image_id]
     task = @user.tasks.create! task_params
+    Resque.enqueue(NewTask, task.id) if task
     render_response task
   end
 
   def update
+    Task.search_image params[:image_id]
     @task.update! task_params
     render_response @task
   end
@@ -34,4 +37,7 @@ class Api::TasksController < Api::BaseController
     @task = Task.find(params[:id])
   end
 
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    render_error({ 'message'=>'Image not found' }.to_json, 404)
+  end
 end

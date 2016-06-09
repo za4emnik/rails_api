@@ -1,7 +1,7 @@
 class Api::BaseController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :verify_access_token
-  before_action :find_user, only: [:update, :destroy, :show, :index]
+  before_action :find_user, only: [:update, :destroy, :show, :index, :create]
 
   rescue_from UnauthorizedError do |e|
     render_error({ 'message'=>'Not Authorized' }.to_json, 401)

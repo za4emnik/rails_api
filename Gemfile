@@ -9,6 +9,11 @@ gem 'carrierwave'
 gem 'kaminari'
 gem 'active_model_serializers'
 gem 'protected_attributes'
+gem 'redis'
+gem 'redis-rails'
+gem "redis-store"
+gem 'resque'
+gem 'resque-scheduler'
 
 group :development, :test do
   gem 'byebug'
