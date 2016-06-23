@@ -12,4 +12,9 @@ class Task < ActiveRecord::Base
   def self.update_status(id, status)
     Task.where( id: id ).update_all( status: status )
   end
+
+  def self.save_result
+    
+  end
+
 end

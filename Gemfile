@@ -14,6 +14,8 @@ gem 'redis-rails'
 gem "redis-store"
 gem 'resque'
 gem 'resque-scheduler'
+gem 'httparty'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug'
