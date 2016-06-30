@@ -16,6 +16,8 @@ gem 'resque'
 gem 'resque-scheduler'
 gem 'httparty'
 gem 'dotenv-rails'
+gem 'puma'
+#gem 'mina'
 
 group :development, :test do
   gem 'byebug'

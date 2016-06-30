@@ -13,8 +13,10 @@ class Task < ActiveRecord::Base
     Task.where( id: id ).update_all( status: status )
   end
 
-  def self.save_result
-    
+  def save_result(remote_image)
+    self.status = 'done'
+    self.processed_image = remote_image
+    self.save!
   end
 
 end

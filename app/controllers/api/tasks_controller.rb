@@ -12,7 +12,7 @@ class Api::TasksController < Api::BaseController
   def create
     Task.search_image params[:image_id]
     task = @user.tasks.create! task_params
-    e = Resque.enqueue(NewTask, task.id)
+    Resque.enqueue(NewTask, task.id)
     render_response task
 
   end

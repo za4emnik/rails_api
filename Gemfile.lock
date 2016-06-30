@@ -98,6 +98,7 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     protected_attributes (1.1.3)
       activemodel (>= 4.0.1, < 5.0)
+    puma (3.4.0)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -220,6 +221,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   kaminari
   protected_attributes
+  puma
   rails (= 4.2.6)
   redis
   redis-rails
